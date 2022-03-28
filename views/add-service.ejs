@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Register - Brand</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i"
+    />
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="/assets/fonts/simple-line-icons.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css"
+    />
+    <link rel="stylesheet" href="/assets/css/vanilla-zoom.min.css" />
+    <style>
+      a.close {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <%- include('./partials/nav')%>
+    <main class="page registration-page">
+      <section class="clean-block clean-form dark">
+        <div class="container">
+          <div class="block-heading">
+            <h2 class="text-info">Service Registration</h2>
+            <p>Welcome to our service list.</p>
+          </div>
+          <form method="post" action="/add-service">
+            <h3 id="alert" class="alert"></h3>
+            <div class="mb-3">
+              <label class="form-label" for="name">Name</label>
+              <input
+                name="name"
+                class="form-control item"
+                type="text"
+                id="name"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="password">Price</label>
+              <input
+                name="price"
+                class="form-control item"
+                type="number"
+                id="password"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="confirm">Properties</label><br />
+              <div class="container" id="listed">
+                <!-- <div class="row" id="listed"></div> -->
+              </div>
+              <input
+                id="key"
+                placeholder="Name of info..."
+                style="width: 49%; display: inline-block"
+                class="form-control item"
+                type="text"
+                id="confirm"
+              />
+
+              <input
+                id="value"
+                placeholder="Information"
+                style="width: 49%; display: inline-block"
+                class="form-control item"
+                type="text"
+                id="confirm"
+              />
+              <span
+                id="custom"
+                onclick="addServices()"
+                class="btn btn-sm btn-primary mt-1"
+                >Add</span
+              >
+            </div>
+            <div class="form-group">
+              <textarea
+                id="key"
+                rows="6"
+                placeholder="More info..."
+                style="width: 100%"
+                id="Description"
+                class="form-control item"
+                name="description"
+              ></textarea>
+            </div>
+
+            <input id="hidden" type="hidden" value="[]" name="properties" />
+            <div class="mb-3">
+              <label class="form-label" for="email">Price Calculations</label>
+              <input
+                name="formula"
+                class="form-control item"
+                type="text"
+                id="email"
+                style="width: 100%"
+                required
+              />
+              <span id="passmatch"></span>
+            </div>
+            <button class="btn btn-primary" type="submit">Save</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <%- include('./partials/footer') %>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="/assets/js/vanilla-zoom.js"></script>
+    <script src="/assets/js/theme.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>

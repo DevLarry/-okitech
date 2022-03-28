@@ -1,0 +1,58 @@
+<style>
+  .badge-notify {
+    background: red;
+    position: relative;
+    top: -20px;
+    right: 10px;
+  }
+
+  @media(width: 420px) {
+    .my-cart-icon {
+      padding-top: 10px;
+    }
+  }
+
+  .my-cart-icon-affix {
+    position: fixed;
+    z-index: 999;
+  }
+</style>
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+  <div class="container">
+    <a class="navbar-brand logo" href="/">Okitech</a>
+    <div style="float: right; cursor: pointer" class="navbar-toggler">
+      <span class="glyphicon glyphicon-shopping-cart my-cart-icon"><span
+          class="badge badge-notify my-cart-badge"></span></span>
+    </div>
+    <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+      <span class="visually-hidden">Toggle navigation</span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navcol-1">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="features.html">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="pricing">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about-us.html">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact-us.html">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <div style="float: right; cursor: pointer; top: 30px" class="nav-link collapse navbar-collapse">
+            <span class="glyphicon glyphicon-shopping-cart my-cart-icon">
+              <span class="badge badge-notify my-cart-badge"></span>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
