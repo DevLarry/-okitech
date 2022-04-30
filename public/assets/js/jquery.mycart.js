@@ -4,6 +4,10 @@
  * Copyright (c) 2017 Asraf Uddin Ahmed; Licensed None
  */
 
+// if (!ProductManager.getAllProducts() && sessionStorage.getItem("products")) {
+// 	let product = JSON.parse(sessionStorage.getItem("products"));
+// 	ProductManager.setAllProducts(product)
+// }
 (function ($) {
 	"use strict";
 
@@ -74,8 +78,8 @@
     PRIVATE
     */
 		const STORAGE_NAME = "__mycart";
-		localStorage[STORAGE_NAME] = localStorage[STORAGE_NAME]
-			? localStorage[STORAGE_NAME]
+		sessionStorage[STORAGE_NAME] = sessionStorage[STORAGE_NAME]
+			? sessionStorage[STORAGE_NAME]
 			: "";
 		var getIndexOfProduct = function (id) {
 			var productIndex = -1;
@@ -89,7 +93,7 @@
 			return productIndex;
 		};
 		var setAllProducts = function (products) {
-			localStorage[STORAGE_NAME] = JSON.stringify(products);
+			sessionStorage[STORAGE_NAME] = JSON.stringify(products);
 		};
 		var addProduct = function (id, name, summary, price, quantity, image) {
 			var products = getAllProducts();
@@ -102,6 +106,8 @@
 				image,
 			});
 			setAllProducts(products);
+			// sessionStorage.setItem("products", products);
+			// sessionStorage.setItem("products", JSON.stringify(products));
 		};
 
 		/*
@@ -109,7 +115,7 @@
     */
 		var getAllProducts = function () {
 			try {
-				var products = JSON.parse(localStorage[STORAGE_NAME]);
+				var products = JSON.parse(sessionStorage[STORAGE_NAME]);
 				return products;
 			} catch (e) {
 				return [];
@@ -162,7 +168,7 @@
 			}
 		};
 		var clearProduct = function () {
-			setAllProducts([]);
+			// setAllProducts([]);
 		};
 		var removeProduct = function (id) {
 			var products = getAllProducts();
@@ -188,7 +194,6 @@
 			});
 			return total;
 		};
-
 		objToReturn.getAllProducts = getAllProducts;
 		objToReturn.updatePoduct = updatePoduct;
 		objToReturn.setProduct = setProduct;
@@ -198,7 +203,6 @@
 		objToReturn.getTotalPrice = getTotalPrice;
 		return objToReturn;
 	})();
-
 	var loadMyCartEvent = function (targetSelector) {
 		var options = OptionManager.getOptions();
 		var $cartIcon = $("." + options.classCartIcon);
@@ -216,7 +220,7 @@
 		var classAffixMyCartIcon = "my-cart-icon-affix";
 
 		if (options.cartItems && options.cartItems.constructor === Array) {
-			ProductManager.clearProduct();
+			// ProductManager.clearProduct();
 			$.each(options.cartItems, function () {
 				ProductManager.setProduct(
 					this.id,
@@ -262,8 +266,10 @@
 		var drawTable = function () {
 			var $cartTable = $("#" + idCartTable);
 			$cartTable.empty();
+			// Array.prototype.each = e=>Array.forEach(e);
 
 			var products = ProductManager.getAllProducts();
+			// console.log(typeof products, ProductManager.getAllProducts())
 			$.each(products, function () {
 				var total = this.quantity * this.price;
 				$cartTable.append(
